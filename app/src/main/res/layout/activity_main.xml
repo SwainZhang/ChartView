@@ -9,17 +9,29 @@
     tools:context="com.example.emery.chartview.MainActivity">
 
     <LinearLayout
+        android:weightSum="10"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="match_parent">
 
-        <com.example.emery.chartview.ChartView
-            android:id="@+id/cv_chartView"
+        <LinearLayout
+            android:layout_weight="8"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
-        </com.example.emery.chartview.ChartView>
+            android:layout_height="match_parent">
+            <com.example.emery.chartview.ChartView
+                android:id="@+id/cv_chartView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+            </com.example.emery.chartview.ChartView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+        </LinearLayout>
     </LinearLayout>
 
 
