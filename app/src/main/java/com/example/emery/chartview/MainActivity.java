@@ -21,13 +21,16 @@ public class MainActivity extends AppCompatActivity {
         pivotLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LiftHintWindow hintWindow = new LiftHintWindow(MainActivity.this);
+                String content = "销售总额=会员消费+支付宝账户+微信账户+其他收入";
+                String b = "会员消费大于3天";
+                LiftHintWindow hintWindow = new LiftHintWindow(MainActivity.this,b);
+                hintWindow.setContentText(b);
                 View contentView = hintWindow.getContentView();
                 //需要先测量，PopupWindow还未弹出时，宽高为0
                 contentView.measure(hintWindow.makeDropDownMeasureSpec(hintWindow.getWidth()),
                         hintWindow.makeDropDownMeasureSpec(hintWindow.getHeight()));
 
-                int offsetX = -pivotLeft.getMeasuredWidth()-50;
+                int offsetX = -3*contentView.getMeasuredWidth()/40;
                 int offsetY = 0;
                 PopupWindowCompat.showAsDropDown(hintWindow, pivotLeft, offsetX, offsetY, Gravity.START);
 
