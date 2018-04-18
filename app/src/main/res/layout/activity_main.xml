@@ -1,38 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
+    android:orientation="vertical"
     tools:context="com.example.emery.chartview.MainActivity">
 
-    <LinearLayout
-        android:weightSum="10"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/pivot_left"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="100dp"
+        android:background="#f00"/>
 
-        <LinearLayout
-            android:layout_weight="8"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <com.example.emery.chartview.ChartView
-                android:id="@+id/cv_chartView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp">
-            </com.example.emery.chartview.ChartView>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_weight="2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/pivot_right"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="80dp"
+        android:layout_marginTop="200dp"
+        android:background="#f00"/>
 
-        </LinearLayout>
-    </LinearLayout>
-
-
-</LinearLayout>
+</RelativeLayout>

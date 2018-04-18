@@ -1,24 +1,63 @@
 package com.example.emery.chartview;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.widget.PopupWindowCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final TextView pivotLeft = findViewById(R.id.pivot_left);
 
-        ChartView  cvView=(ChartView)findViewById(R.id.cv_chartView);
+        pivotLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LiftHintWindow hintWindow = new LiftHintWindow(MainActivity.this);
+                View contentView = hintWindow.getContentView();
+                //需要先测量，PopupWindow还未弹出时，宽高为0
+                contentView.measure(hintWindow.makeDropDownMeasureSpec(hintWindow.getWidth()),
+                        hintWindow.makeDropDownMeasureSpec(hintWindow.getHeight()));
 
-        //定义三个数组，分别为x轴和Y轴的值，values为折线的点
+                int offsetX = -pivotLeft.getMeasuredWidth()-50;
+                int offsetY = 0;
+                PopupWindowCompat.showAsDropDown(hintWindow, pivotLeft, offsetX, offsetY, Gravity.START);
 
-        String[] txtx = new String[] { "04/08", "04/09", "04/10", "04/09", "04/10", "04/11", "04/12" };
-        String[] txty = new String[] { "-20000", "0", "20000", "60000", "800000" };
-        String[] values = new String[] { "6000", "50000", "5000", "2000", "40000", "500000", "50" };
-        //String[] values = new String[] { "0", "0", "0", "0", "0", "0", "0" };
-        cvView.setData(txtx, txty, values);
+            }
+        });
+
+        final TextView pivotRight = findViewById(R.id.pivot_right);
+        pivotRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RightHintWindow hintWindow = new RightHintWindow(MainActivity.this);
+                View contentView = hintWindow.getContentView();
+                //需要先测量，PopupWindow还未弹出时，宽高为0
+                contentView.measure(hintWindow.makeDropDownMeasureSpec(hintWindow.getWidth()),
+                        hintWindow.makeDropDownMeasureSpec(hintWindow.getHeight()));
+
+                int offsetX = -contentView.getMeasuredWidth() + 60;
+                int offsetY = 0;
+                PopupWindowCompat.showAsDropDown(hintWindow, pivotRight, offsetX, offsetY, Gravity.END);
+
+            }
+        });
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        // TODO Auto-generated method stub
+        super.onWindowFocusChanged(hasFocus);
+
+        if(hasFocus){
+            }
     }
 }
